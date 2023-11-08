@@ -1,17 +1,19 @@
 // type Color = 'red' | 'green' | 'blue'
 
 type ButtonProps = {
-  style:{
-    backgroundColor: string;
-  color: string;
-  fontSize?: number;
-  // pillShape?: boolean;
-  // padding?: [number, number, number, number]; // this is a tuple
-  }
+  // style:{
+  //   backgroundColor: string;
+  // color: string;
+  // fontSize?: number;
+  // // pillShape?: boolean;
+  // // padding?: [number, number, number, number]; // this is a tuple
+  // }
+  style: React.CSSProperties,
+  onClick: () => number
 
 }
 
-const Button = ({ style }: ButtonProps) => {
+const Button = ({ style,  onClick }: ButtonProps) => {
 
   // const backgroundColor = props.backgroundColor
   //we destructure the props here
@@ -22,7 +24,7 @@ const Button = ({ style }: ButtonProps) => {
 
   return (
     <>
-      <button style={style} >Learn TypeScript</button>
+      <button style={style} onClick={onClick}>Learn TypeScript</button>
 
     </>
 
