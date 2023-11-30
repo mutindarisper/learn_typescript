@@ -8,23 +8,32 @@ type ButtonProps = {
   // // pillShape?: boolean;
   // // padding?: [number, number, number, number]; // this is a tuple
   // }
-  style: React.CSSProperties,
-  onClick: () => number
+  // style: React.CSSProperties,
+  // onClick: () => number,
+  // children:React.ReactNode //passing all react elements, text etc
+  //to specify the children to elements only
+  // children: JSX.Element
+  setCount:React.Dispatch<React.SetStateAction<number>>
 
 }
 
-const Button = ({ style,  onClick }: ButtonProps) => {
+const Button = ({
+  //  style,  onClick, children
+setCount
+   }: ButtonProps) => {
 
   // const backgroundColor = props.backgroundColor
   //we destructure the props here
   // const { backgroundColor } = props
 
-
+setCount(1)
 
 
   return (
     <>
-      <button style={style} onClick={onClick}>Learn TypeScript</button>
+      <button > Learn TypeScript
+      
+      </button>
 
     </>
 

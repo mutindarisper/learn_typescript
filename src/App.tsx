@@ -1,27 +1,26 @@
+// App.tsx
 
-// import './App.css'
-import Button from './components/Button'
+import React from 'react';
 
-function App() {
-  const onclick = () => {
-    console.log('Learning Typescript')
-    return 5
-
-  }
+import { Route, Routes } from 'react-router-dom';
+// import ComponentA from './components/ComponentA';
+import ComponentB from './components/ComponentB';
+import ComponentA from './components/ComponentA';
 
 
+const App: React.FC = () => {
   return (
-    <>
-  <Button style={ {backgroundColor:'steelblue',
-  fontSize: 24,
-  padding:'1rem 2rem',
-  borderRadius:8,
-  borderColor: "transparent",
-  color:'white'}}
-  onClick={onclick}
-   />
-    </>
-  )
-}
+    <Routes>
+      {/* <Switch> */}
+        <Route  path="/"
+        //  Component={ComponentA}
+          element={<ComponentA/>}  />
+        <Route  path="/componentB/:data" 
+        // Component={ComponentB}
+         element={<ComponentB/>} />
+      {/* </Switch> */}
+    </Routes>
+  );
+};
 
-export default App
+export default App;
