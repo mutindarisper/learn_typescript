@@ -47,7 +47,17 @@ const ComponentA: React.FC = () => {
   }
 
   //add new tasks
-  const markTaskDone = () => {
+  const markTaskDone = (id:Number) => {
+    let newTask = todo.map(task => {
+      if (task.id === id) {
+        return ({ ...task, status: !task.status })
+      }
+      return task
+    })
+    console.log(newTask)
+    setTodo(newTask)
+
+    
 
   }
 
@@ -153,7 +163,9 @@ const ComponentA: React.FC = () => {
                   </div>
 
                   <div className="iconsWrap">
-                    <span >
+                    <span title='Completed / Not Completed'
+                    onClick={() => markTaskDone(task.id)}
+                     >
                       <FontAwesomeIcon icon={faCircleCheck} />
                     </span>
                     <span >
