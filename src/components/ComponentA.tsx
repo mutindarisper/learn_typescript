@@ -20,9 +20,9 @@ const ComponentA: React.FC = () => {
   };
 
   const [todo, setTodo] = useState([
-    { id: 1, text: 'Learn React', status: false },
-    { id: 2, text: 'Build a project', status: false },
-    { id: 3, text: 'Practice TypeScript', status: false }
+    // { "id": 1, "text": 'Learn React', "status": false },
+    // { "id": 2, "text": 'Build a project', "status": false },
+    // { "id": 3, "text": 'Practice TypeScript', "status": false }
   ])
 
   const [newTask, setNewTask] = useState('')
@@ -63,17 +63,29 @@ const ComponentA: React.FC = () => {
 
   //add new tasks
   const cancelUpdate = () => {
+    setUpdateData('')
 
   }
 
   //add new tasks
-  const changeTask = () => {
+  const changeTask = (e) => {
+    let newEntry = {
+      id: updateData.id,
+      text: e.target.value,
+      status: updateData.status ? true : false
+    }
+
+    setUpdateData(newEntry)
 
   }
 
   //add new tasks
   const updateTask = () => {
 
+    let filterRecords = [...todo].filter(task => task.id !== updateData.id);
+    let updatedObject = [...filterRecords, updateData];
+    setTodo(updatedObject)
+    setUpdateData('')
   }
 
 
@@ -101,8 +113,8 @@ const ComponentA: React.FC = () => {
          <div className="row">
         <div className="col">
           <input 
-            value={ updateData && updateData }
-            onChange={ (e) => changeTask()}
+            value={ updateData && updateData.text }
+            onChange={ (e) => changeTask(e)}
             className="form-control form-control-lg"
           />
         </div>
@@ -168,9 +180,18 @@ const ComponentA: React.FC = () => {
                      >
                       <FontAwesomeIcon icon={faCircleCheck} />
                     </span>
-                    <span >
-                      <FontAwesomeIcon icon={faPen} />
-                    </span>
+
+
+                    {task.status ? null :
+                     <span title='edit' 
+                     onClick={ () => setUpdateData({
+                      id: task.id,
+                       text: task.text,
+                        status: task.status ? true : false
+                     })} >
+                     <FontAwesomeIcon icon={faPen} />
+                   </span>  }
+                   
 
                     {/* onclick, we shall get the id of the task, which will be used to delete that task */}
                     <span onClick={() => deleteTask(task.id)}> 
