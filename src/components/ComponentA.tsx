@@ -39,7 +39,10 @@ const ComponentA: React.FC = () => {
 
   }
   //add new tasks
-  const deleteTask = () => {
+  const deleteTask = (id:number) => {
+    //delete a task and return the task ids tht do not match  the dleted task id, so it will return the rest of the array
+    let newTasks = todo.filter( task => task.id !== id)
+    setTodo([...newTasks])
 
   }
 
@@ -156,7 +159,10 @@ const ComponentA: React.FC = () => {
                     <span >
                       <FontAwesomeIcon icon={faPen} />
                     </span>
-                    <span >
+
+                    {/* onclick, we shall get the id of the task, which will be used to delete that task */}
+                    <span onClick={() => deleteTask(task.id)}> 
+
                       <FontAwesomeIcon icon={faTrashCan} />
                     </span>
 
