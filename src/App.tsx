@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 // import ComponentA from './components/ComponentA';
 import ComponentB from './components/ComponentB';
 import ComponentA from './components/ComponentA';
+import ArrayComponent from './components/ArrayComponent';
 
 
 const App: React.FC = () => {
@@ -14,7 +15,7 @@ const App: React.FC = () => {
       {/* <Switch> */}
         <Route  path="/"
         //  Component={ComponentA}
-          element={<ComponentA/>}  />
+          element={<ArrayComponent/>}  />
         <Route  path="/componentB/:data" 
         // Component={ComponentB}
          element={<ComponentB/>} />
